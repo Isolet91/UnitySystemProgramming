@@ -68,12 +68,15 @@ public class TitleManager : MonoBehaviour
 
         m_AsyncOperation.allowSceneActivation = false;
 
+        // 로딩 시간이 짧은 경우 로딩 슬라이더 변화가 너무 빨라 보이지 않을 수 있다.
+        // 일부러 몇 초간 50%로 보여줌으로써 시각적으로 더 자연스럽게 처리한다
         LoadingSlider.value = 0.5f;
         LoadingProgresssTxt.text = $"{((int)LoadingSlider.value * 100)}%";
         yield return new WaitForSeconds(0.5f);
 
-        while(m_AsyncOperation.isDone) // 로딩 진행중
+        while(m_AsyncOperation.isDone) // 로딩이 진행중일 때
         {
+            // 로딩 슬라이더 업데이트
             LoadingSlider.value = m_AsyncOperation.progress < 0.5f ? 0.5f : m_AsyncOperation.progress;
             LoadingProgresssTxt.text = $"{((int)LoadingSlider.value * 100)}%";
 
