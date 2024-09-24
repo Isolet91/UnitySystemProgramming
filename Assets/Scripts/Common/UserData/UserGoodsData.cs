@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UserGoodsData : IUserData
 {
-    // 보석
+    // 보석 (int 범위를 벗어날 수 있다)
     public long Gem { get; set; }
     // 골드
     public long Gold { get; set; }
@@ -13,6 +13,9 @@ public class UserGoodsData : IUserData
     public void SetDefaultData()
     {
         Logger.Log($"{GetType()}::SetlDefaultData");
+
+        Gem = 0;
+        Gold = 0;
     }
 
     public bool LoadData()
@@ -23,6 +26,7 @@ public class UserGoodsData : IUserData
 
         try
         {
+            // Gem, Gold는 long이기 때문에 문자열을 이용해서 데이터를 저장하고 불러와야 함.
             Gem = long.Parse(PlayerPrefs.GetString("Gem"));
             Gold = long.Parse(PlayerPrefs.GetString("Gold"));
             result = true;
