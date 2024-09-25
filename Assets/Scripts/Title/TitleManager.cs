@@ -47,6 +47,7 @@ public class TitleManager : MonoBehaviour
 
     private IEnumerator LoadGameCo()
     {
+
         // 이 코루틴 함수는 게임의 로딩을 처음 시작하는 중요한 함수이기 때문에
         // 로그를 찍음
         // GetType() : 클래스 명을 출력
