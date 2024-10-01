@@ -11,7 +11,7 @@ public class UIManager : SingletonBehavior<UIManager>
     private BaseUI m_FrontUI;
     private Dictionary<System.Type, GameObject> m_OpenUIPool = new Dictionary<System.Type, GameObject>();
     private Dictionary<System.Type, GameObject> m_ClosedUIPool = new Dictionary<System.Type, GameObject>();
-
+     
     private BaseUI GetUI<T>(out bool isAlreadyOpen)
     {
         System.Type uiType = typeof(T);
